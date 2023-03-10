@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { dataI } from '../types/types'
 
-const withLoadingIndicator = (WrappedComponent: any) => {
+interface WrappedComponentProps {
+  name: string;
+  surname: string;
+}
+
+const withLoadingIndicator = (WrappedComponent: React.ComponentType<WrappedComponentProps>) => {
   return () => {
     const [isLoading, setLoading] = useState(true);
     const [userData, setUserData] = useState({name:'', surname:''});
 
     useEffect(() => {
       fetchData().then((data) => {
-        console.log('data',data);
         setUserData(data as dataI);
         setLoading(false);
       })
@@ -18,8 +22,6 @@ const withLoadingIndicator = (WrappedComponent: any) => {
    
     return <WrappedComponent name={userData.name} surname={userData.surname}/>
   }
-
-
 }
 
 const fetchData = () => {
