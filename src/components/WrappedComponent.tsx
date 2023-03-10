@@ -1,4 +1,4 @@
-const WrappedComponent = () => {
+const WrappedComponent = (): JSX.Element => {
   return (
     <div>Данные успешно получены!</div>
   )

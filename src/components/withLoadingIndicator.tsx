@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const withLoadingIndicator = (WrappedComponent: any) => {
+const withLoadingIndicator = (WrappedComponent: () => JSX.Element) => {
   return () => {
     const [isLoading, setLoading] = useState(true);
 
