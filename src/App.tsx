@@ -1,15 +1,11 @@
 import './App.css';
+import withLoadingIndicator from './components/withLoadingIndicator';
+import WrappedComponent from './components/WrappedComponent';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello CA!
-        </p>
-      </header>
-    </div>
-  );
+const result = withLoadingIndicator(WrappedComponent);
+
+  return result();
 }
 
 export default App;
