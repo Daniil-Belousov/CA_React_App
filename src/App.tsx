@@ -14,9 +14,7 @@ function App() {
         <button onClick={() => setIsOpenModal(true)}>Открыть модалку</button>
       </header>
       <body>
-        {isOpenModal &&
-          <Modal close={() => setIsOpenModal(false)} ChildComponent={<div>Контент для модального окна</div>}/>
-        }
+          <Modal close={() => setIsOpenModal(false)} isOpen={isOpenModal} ChildComponent={<div>Контент для модального окна</div>}/>
       </body>
     </div>
   );
