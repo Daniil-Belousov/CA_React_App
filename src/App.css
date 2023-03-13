@@ -1,7 +1,3 @@
-interface PropsI {
-  isOpen: boolean;
-}
-
 .App {
   text-align: center;
 }
