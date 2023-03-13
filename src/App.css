@@ -1,3 +1,7 @@
+interface PropsI {
+  isOpen: boolean;
+}
+
 .App {
   text-align: center;
 }
@@ -11,4 +15,38 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.menuBtn {
+  position: fixed;
+  left:  20px;
+  top: 20px;
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+  color:aqua;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menuBtn:hover {
+  scale: 1.1;
+}
+
+.list {
+  position: fixed;
+  top: 50px;
+  left: 30px;
+  text-align: start;
+  padding: 0;
+}
+
+.item {
+  padding: 5px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.item:hover {
+  scale: 1.1;
 }
