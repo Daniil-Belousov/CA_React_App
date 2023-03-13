@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import Modal from './Modal';
+import Options from './Options';
 
 function App() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <div className="App">
@@ -11,11 +11,10 @@ function App() {
         <p>
           Hello CA!
         </p>
-        <button onClick={() => setIsOpenModal(true)}>Открыть модалку</button>
+        {!isOpen ? <button className='menuBtn' onClick={() => setOpen(!isOpen)}>Menu</button> 
+        : <button style={{color: 'red'}} className='menuBtn' onClick={() => setOpen(!isOpen)}>Close</button>}
+        <Options isOpen={isOpen} />
       </header>
-      <body>
-          <Modal close={() => setIsOpenModal(false)} isOpen={isOpenModal} ChildComponent={<div>Контент для модального окна</div>}/>
-      </body>
     </div>
   );
 }
