@@ -6,10 +6,11 @@ interface ModalI {
   ChildComponent: ReactNode;
   close: () => void;
   isOpen: boolean;
+  Container: Element
 }
 
-const Modal = ({ ChildComponent, close, isOpen } : ModalI): ReactElement | null => {
-  const ModalContainer = useMemo(() => document.getElementById('modal'), [])
+const Modal = ({ ChildComponent, close, isOpen, Container } : ModalI): ReactElement | null => {
+  // const ModalContainer = useMemo(() => document.getElementById('modal'), [])
 
   if(!isOpen) return null;
   
@@ -17,7 +18,7 @@ const Modal = ({ ChildComponent, close, isOpen } : ModalI): ReactElement | null 
       <div className="modal">
         {ChildComponent}
       <button onClick={() => close()}>Закрыть модалку</button>
-      </div>, ModalContainer as Element
+      </div>, Container
     ) 
 }
 
