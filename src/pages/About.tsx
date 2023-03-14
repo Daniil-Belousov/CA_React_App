@@ -1,11 +1,7 @@
-import React from "react"
-import NavBar from "../NavBar"
-
 const About = (): JSX.Element => {
   return (
     <>
-      <NavBar/>
-      <h1 style={{color: 'black'}}>О нас</h1>
+      <h1 style={{color: 'black',  position: 'absolute', left: '50%', transform: 'translateX(-50%)'}}>О нас</h1>
     </>
   )
 }

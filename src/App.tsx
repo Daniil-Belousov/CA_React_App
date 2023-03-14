@@ -17,8 +17,8 @@ import Main from './pages/Main';
 
 interface PropsI {
   path: string,
-  element: JSX.Element,
-  nodeRef: any
+  Component: () => JSX.Element,
+  // nodeRef: any
 }
 
 interface MatchI {
@@ -26,94 +26,90 @@ interface MatchI {
 }
 
   
-const routes: PropsI[] = [
-  {
-    path: "/",
-    element: <Main/>,
-    nodeRef: createRef(),
-  },
-  {
-    path: "/about",
-    element: <About/>,
-    nodeRef: createRef(),
-  },
-];
+// const routes: PropsI[] = [
+//   {
+//     path: "/",
+//     Component: Main,
+//     // nodeRef: createRef(),
+//   },
+//   {
+//     path: "/about",
+//     Component: About,
+//     // nodeRef: createRef(),
+//   },
+// ];
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Main/>,
-    children: routes.map((route) => ({
-      index: route.path === '/',
-      path: route.path === '/' ? undefined : route.path,
-      element: route.element,
-    })),
-  }
-])
+// const router = createBrowserRouter([
+//   {
+//     path: '/',
+//     element: <Main/>,
+//     children: routes.map((route) => ({
+//       index: route.path === '/',
+//       path: route.path === '/' ? undefined : route.path,
+//       element: route.element,
+//     })),
+//   }
+// ])
 
 function App(): JSX.Element {
-  
-  const location = useLocation();
-  const currentOutlet = useOutlet();
+  // const location = useLocation();
+  // const currentOutlet = useOutlet();
 
-  const { nodeRef } = routes.find((route) => route.path === location.pathname) ?? {}
+  // const { nodeRef } = routes.find((route) => route.path === location.pathname) ?? {}
 
-  return (
-    <>
-      <div>
-        <NavBar/>
-      </div>
-      <div>
-      <SwitchTransition>
-          <CSSTransition
-            key={location.pathname}
-            nodeRef={nodeRef}
-            timeout={300}
-            classNames="page"
-            unmountOnExit
-          >
-            {(state) => (
-              <div ref={nodeRef} className="page">
-                {currentOutlet}
-              </div>
-            )}
-          </CSSTransition>
-        </SwitchTransition>
-      </div>
-    </>
-  )
-  }
-
-  const container = document.getElementById('root') as Element | DocumentFragment
-  const root = createRoot(container)
-  root.render(<RouterProvider router={router} />)
   // return (
-  //   <Router>
-  //     <Routes>
-  //       {routes.map(({ path, Component }) => (
-  //         <React.Fragment key={`fragment-${path}`}>
-  //           <Route key={path} path={path}>
-  //           <>
-  //           {({ match }: MatchI): React.ReactNode => (
-  //             <CSSTransition
-  //               in={match !== null}
-  //               timeout={300}
-  //               classNames="page"
-  //               unmountOnExit
-  //             >
-  //               <div className="page">
-  //                 <Component />
-  //               </div>
-  //             </CSSTransition>
-  //           )}
-  //           </>
-  //         </Route>
-  //       </React.Fragment>
-  //       ))}
-  //     </Routes>
-  //   </Router>
-  // );
+    // <>
+    //   <div>
+    //     <NavBar/>
+    //   </div>
+    //   <div>
+    //   <SwitchTransition>
+    //       <CSSTransition
+    //         key={location.pathname}
+    //         nodeRef={nodeRef}
+    //         timeout={300}
+    //         classNames="page"
+    //         unmountOnExit
+    //       >
+    //         {(state) => (
+    //           <div ref={nodeRef} className="page">
+    //             {currentOutlet}
+    //           </div>
+    //         )}
+    //       </CSSTransition>
+    //     </SwitchTransition>
+    //   </div>
+    // </>
+  // )
+  // }
 
+  // const container = document.getElementById('root') as Element | DocumentFragment
+  // const root = createRoot(container)
+  // root.render(<RouterProvider router={router} />)
+  return (
+    <></>
+    // <Router>
+    //   <Routes>
+    //     {routes.map(({ path, Component }) => (
+    //         <Route key={path} path={path}>
+    //         {({ match }: MatchI) => (
+    //           <CSSTransition
+    //             in={match !== null}
+    //             timeout={300}
+    //             classNames="page"
+    //             unmountOnExit
+    //           >
+    //             <div className="page">
+    //               <Component />
+    //             </div>
+    //           </CSSTransition>
+    //         )}
+    //       </Route>
+    //     ))}
+    //   </Routes>
+    // </Router>
+  );
+  }
   
   export default App;
 

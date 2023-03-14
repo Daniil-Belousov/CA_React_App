@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 
@@ -20,10 +19,10 @@ const NavBar = (): JSX.Element => {
     <>
       {!isOpen ? <button className='menuBtn' onClick={() => setOpen(!isOpen)}>Menu</button> 
       : <button style={{color: 'red'}} className='menuBtn' onClick={() => setOpen(!isOpen)}>Close</button>}
-      <div className='list' style={!isOpen ? {visibility: 'hidden'} : {visibility: 'visible'}}>
+      <div className='list' style={!isOpen ? {display: 'none'} : {display: 'flex'}}>
         <>
         {isOpen ? navArr.map(item => {
-          return <Link to={`${item.path}`} className='item'>{item.text}</Link>
+          return <Link to={item.path} key={item.path} className='item' onClick={() => setOpen(false)}>{item.text}</Link>
         }) : null}
         </>
       </div>
