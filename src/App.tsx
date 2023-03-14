@@ -1,11 +1,9 @@
 import './App.css';
-import withLoadingIndicator from './components/withLoadingIndicator';
+import WithLoadingIndicator from './components/WithLoadingIndicator';
 import WrappedComponent from './components/WrappedComponent';
 
 function App() {
-const result = withLoadingIndicator(WrappedComponent);
-
-  return result();
+  return <WithLoadingIndicator WrappedComponent={<WrappedComponent/>}/>;
 }
 
 export default App;
