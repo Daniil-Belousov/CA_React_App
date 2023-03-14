@@ -1,19 +1,11 @@
-import {dataI} from '../types/types'
-
-interface WrappedComponentProps {
-  name: string;
-  surname: string;
-}
-
-const WrappedComponent = ({name, surname} : dataI): JSX.Element => {
-
-  const welcomeStr = `Добро пожаловать ${name} ${surname}!`
+const WrappedComponent = ({fact} : {fact?:string}): JSX.Element => {
+  const factStr = `А вы знали? - ${fact}`
 
   return (
     <>
       <div>Данные успешно получены!</div>
         <br/>
-      <div>{welcomeStr}</div>
+      <div>{factStr}</div>
     </>
   )
 }

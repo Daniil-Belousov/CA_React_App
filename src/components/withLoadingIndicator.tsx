@@ -1,35 +1,35 @@
 import { useState, useEffect } from "react";
 import { dataI } from '../types/types'
 
-interface WrappedComponentProps {
-  name: string;
-  surname: string;
-}
+const URL = 'https://catfact.ninja/fact';
 
-const withLoadingIndicator = (WrappedComponent: React.ComponentType<WrappedComponentProps>) => {
+const withLoadingIndicator = (WrappedComponent: React.ComponentType<dataI>): () => JSX.Element => {
   return () => {
     const [isLoading, setLoading] = useState(true);
-    const [userData, setUserData] = useState({name:'', surname:''});
+    const [fact, setFact] = useState('');
 
     useEffect(() => {
-      fetchData().then((data) => {
-        setUserData(data as dataI);
+      fetchData().then((fact) => {
+        setFact(fact);
         setLoading(false);
       })
     }, [])
 
     if(isLoading) return <div>Загрузка данных...</div>;
    
-    return <WrappedComponent name={userData.name} surname={userData.surname}/>
-  }
+
+    return <WrappedComponent fact={fact}/>
+}
 }
 
-const fetchData = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ name: "Даниил", surname: "Белоусов"});
-    }, 3000);
-  });
-};
+async function fetchData() {
+  try {
+  const response = await fetch(URL);
+  const data = await response.json();
+  return data.fact;
+  } catch (err) {
+  console.error('Ошибка получения факта о котиках');
+  }
+  }
 
 export default withLoadingIndicator;
